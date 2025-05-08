@@ -1,7 +1,7 @@
 data "aws_vpc" "vpc" {
   filter {
     name   = "tag:Name"
-    values = ["${var.namespace}-${var.environment}-vpc"]
+    values = ["globant-chandrakala-${var.environment}-vpc"]
   }
 }
 
@@ -10,8 +10,8 @@ data "aws_subnets" "private" {
     name = "tag:Name"
 
     values = [
-      "${var.namespace}-private1-subnet-az1",
-      "${var.namespace}-private2-subnet-az2",
+      "globant-chandrakala-private1-subnet-az1",
+      "globant-chandrakala-private2-subnet-az2",
     ]
   }
 }
@@ -21,8 +21,8 @@ data "aws_subnets" "public" {
     name = "tag:Name"
 
     values = [
-      "${var.namespace}-public1-subnet-az1",
-      "${var.namespace}-public2-subnet-az2",
+      "globant-chandrakala-public1-subnet-az1",
+      "globant-chandrakala-public2-subnet-az2",
     ]
   }
 }
