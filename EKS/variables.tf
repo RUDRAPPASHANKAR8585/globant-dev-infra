@@ -873,7 +873,7 @@ variable "region" {
 variable "namespace" {
   type        = string
   description = "Namespace for the resources."
-  default     = "globant"
+  default     = "globant-chandrakala"
 }
 
 variable "environment" {

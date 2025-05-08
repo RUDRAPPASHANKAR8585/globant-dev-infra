@@ -1,7 +1,7 @@
 
 locals {
 
-  prefix = "globant"
+  prefix = "globant-chandrakala"
 
   subnet_map = {
     "${local.prefix}-public1-subnet-az1" = {
