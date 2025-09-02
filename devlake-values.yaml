@@ -1,0 +1,44 @@
+mysql:
+  enabled: true
+  image:
+    repository: mysql
+    tag: "8.0"
+  rootPassword:
+    existingSecret: devlake-mysql-root
+    key: mysql-root-password
+  persistence:
+    enabled: true
+    storageClass: "gp2"   # gp2 storage class
+    size: 20Gi
+
+lake:
+  encryptionSecret:
+    name: devlake-encryption
+    secret: ENCODE_KEY
+
+devlake:
+  server:
+    replicaCount: 1
+    env:
+      - name: DATABASE_HOST
+        value: mysql
+      - name: DATABASE_PORT
+        value: "3306"
+      - name: DATABASE_USER
+        value: root
+      - name: DATABASE_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: devlake-mysql-root
+            key: mysql-root-password
+
+grafana:
+  enabled: true
+  adminUser: admin
+  adminPassword: "AdminPass123"
+  persistence:
+    enabled: true
+    storageClass: "gp2"   # gp2 storage class
+    size: 5Gi
+  service:
+    type: LoadBalancer
